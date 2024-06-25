@@ -1,0 +1,14 @@
+- name: Build and Test
+  service: app
+  command: pytest
+
+- name: Push to Docker Hub
+  service: app
+  command: |
+    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    docker push $DOCKER_USERNAME/app-image
+    docker push $DOCKER_USERNAME/db-image
+
+- name: Deploy
+  service: app
+  command: docker-compose up -d

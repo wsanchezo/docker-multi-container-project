@@ -1,0 +1,9 @@
+app:
+  build:
+    image: app-image
+    dockerfile_path: Dockerfile.app
+
+db:
+  build:
+    image: db-image
+    dockerfile_path: Dockerfile.db
